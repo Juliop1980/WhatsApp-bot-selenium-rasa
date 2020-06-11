@@ -24,6 +24,48 @@ def readContacts(fileName):
         lst.append(contact)
     return lst
 
+# Función que recibe texto y lo envía al respectivo contacto de whatsapp
+def to_whatsapp(txt, contacto):
+    select_contacto(contacto)
+
+
+def select_contacto(contacto):
+    try:
+        # Select the target
+        x_arg = '//span[contains(@title,' + contacto + ')]'
+        try:
+            wait5.until(EC.presence_of_element_located((
+                By.XPATH, x_arg
+            )))
+        except:
+            # If contact not found, then search for it
+            searBoxPath = '//*[@id="input-chatlist-search"]'
+            wait5.until(EC.presence_of_element_located((
+                By.ID, "input-chatlist-search"
+            )))
+            inputSearchBox = driver.find_element_by_id("input-chatlist-search")
+            time.sleep(0.5)
+            # click the search button
+            driver.find_element_by_xpath('/html/body/div/div/div/div[2]/div/div[2]/div/button').click()
+            time.sleep(1)
+            inputSearchBox.clear()
+            inputSearchBox.send_keys(target[1:len(target) - 1])
+            print('Target Searched')
+            # Increase the time if searching a contact is taking a long time
+            time.sleep(4)
+
+        # Select the target
+        driver.find_element_by_xpath(x_arg).click()
+        print("Target Successfully Selected")
+        time.sleep(2)
+
+
+
+
+
+
+
+
 # Target Contacts, keep them in double colons
 # Not tested on Broadcast
 targets = readContacts("contacts.xlsx")
