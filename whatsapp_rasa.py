@@ -11,6 +11,7 @@ from selenium.webdriver.common.by import By
 import datetime
 import time
 import openpyxl as excel
+import requests
 
 # function to read contacts from a text file
 def readContacts(fileName):
@@ -42,6 +43,25 @@ def to_whatsapp(txt, contacto):
     print("Successfully Send Message to : "+ contacto + '\n')
     success+=1
     time.sleep(0.5)
+
+# Función que envia un mensaje a rasa y retorna el string correspondiente a la salida de rasa
+def to_rasa(txt):
+
+    sender = "whatsapp"
+    bot_message = ""
+    print("Sending message now...")
+    r = requests.post('http://localhost:5002/webhooks/rest/webhook', json={"sender": sender, "message": txt})
+    for i in r.json():
+        bot_message = bot_message + i['text']
+
+    return bot_message
+
+
+
+
+
+
+
 
 
 
