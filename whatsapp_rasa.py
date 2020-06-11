@@ -27,8 +27,28 @@ def readContacts(fileName):
 # Función que recibe texto y lo envía al respectivo contacto de whatsapp
 def to_whatsapp(txt, contacto):
     select_contacto(contacto)
+    # Select the Input Box
+    inp_xpath = "//div[(@contenteditable='true') and (@data-tab='1')]"
+    input_box = wait.until(EC.presence_of_element_located((
+        By.XPATH, inp_xpath)))
+    time.sleep(1)
+
+    # Send message
+    # contacto is your target Name and msgToSend is you message
+    input_box.send_keys(txt) # + Keys.ENTER (Uncomment it if your msg doesnt contain '\n')
+    # Link Preview Time, Reduce this time, if internet connection is Good
+    time.sleep(10)
+    input_box.send_keys(Keys.ENTER)
+    print("Successfully Send Message to : "+ contacto + '\n')
+    success+=1
+    time.sleep(0.5)
 
 
+
+
+
+
+# selecciona el contacto en Whatsapp Web
 def select_contacto(contacto):
     try:
         # Select the target
@@ -150,7 +170,7 @@ while count<len(msgToSend):
                 time.sleep(2)
 
                 # Select the Input Box
-                inp_xpath = "//div[@contenteditable='true']"
+                inp_xpath = "//div[(@contenteditable='true') and (@data-tab='1')]"
                 input_box = wait.until(EC.presence_of_element_located((
                     By.XPATH, inp_xpath)))
                 time.sleep(1)
