@@ -56,6 +56,12 @@ def to_rasa(txt):
 
     return bot_message
 
+def get_last_whatsapp_message(contacto):
+    select_contacto(contacto)
+    output_box = "//div[(@contenteditable='true') and (@data-tab='1')]"
+
+
+
 
 
 
