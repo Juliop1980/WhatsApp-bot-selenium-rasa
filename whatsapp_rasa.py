@@ -58,7 +58,11 @@ def to_rasa(txt):
 
 def get_last_whatsapp_message(contacto):
     select_contacto(contacto)
-    output_box = "//div[(@contenteditable='true') and (@data-tab='1')]"
+    clear_whatsapp_chat()
+    return driver.find_element_by_class_name("_274yw").text
+
+
+def clear_whatsapp_chat():
 
 
 
