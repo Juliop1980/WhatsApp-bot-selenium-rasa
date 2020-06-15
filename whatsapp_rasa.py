@@ -43,6 +43,7 @@ def to_whatsapp(txt, contacto):
     print("Successfully Send Message to : "+ contacto + '\n')
     success+=1
     time.sleep(0.5)
+    return True
 
 # Función que envia un mensaje a rasa y retorna el string correspondiente a la salida de rasa
 def to_rasa(txt):
@@ -86,7 +87,7 @@ def clear_whatsapp_chat(contacto):
         By.XPATH, confirmar_borrar_xpath)))
     time.sleep(1)
     confirmar_borrar_button.click()
-    time.sleep(10)
+    return True
 
 
 
