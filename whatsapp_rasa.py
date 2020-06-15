@@ -65,9 +65,29 @@ def get_last_whatsapp_message(contacto):
 def clear_whatsapp_chat(contacto):
     select_contacto(contacto)
     #Selecciona menu para luego presionar boton para borrar chat
-    driver.find_element_by_xpath("(//div[(@role='button') and (@title='Menu')])[2]").click()
-    time.sleep(0.5)
+    menu_xpath = "(//div[(@role='button') and (@title='Menu')])[2]"
+    menu_button = wait.until(EC.presence_of_element_located((
+        By.XPATH, menu_xpath)))
+    time.sleep(1)
+    menu_button.click()
+    time.sleep(10)
     #seleccionar boton para borrar chat
+    borrar_xpath = "//div[(@class='Ut_N0 n-CQr') and (@role='button') and (@title='Delete chat')]"
+    #driver.find_element_by_xpath("//div[(@class='Ut_N0 n-CQr') and (@role='button') and (@title='Delete chat')]").click()
+    borrar_button = wait.until(EC.presence_of_element_located((
+        By.XPATH, borrar_xpath)))
+    time.sleep(1)
+    borrar_button.click()
+    time.sleep(10)
+    #confirmar borrar
+    confirmar_borrar_xpath = "//div[(@class='S7_rT FV2Qy') and (@role='button')]"
+    #driver.find_element_by_xpath("//div[(@class='S7_rT FV2Qy') and (@role='button')]").click()
+    confirmar_borrar_button = wait.until(EC.presence_of_element_located((
+        By.XPATH, confirmar_borrar_xpath)))
+    time.sleep(1)
+    confirmar_borrar_button.click()
+    time.sleep(10)
+
 
 
 
