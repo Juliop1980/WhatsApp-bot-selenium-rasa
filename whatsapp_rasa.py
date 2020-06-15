@@ -32,17 +32,17 @@ def to_whatsapp(txt, contacto):
     inp_xpath = "//div[(@contenteditable='true') and (@data-tab='1')]"
     input_box = wait.until(EC.presence_of_element_located((
         By.XPATH, inp_xpath)))
-    time.sleep(1)
+    #time.sleep(1)
 
     # Send message
     # contacto is your target Name and msgToSend is you message
     input_box.send_keys(txt) # + Keys.ENTER (Uncomment it if your msg doesnt contain '\n')
     # Link Preview Time, Reduce this time, if internet connection is Good
-    time.sleep(10)
+    #time.sleep(10)
     input_box.send_keys(Keys.ENTER)
     print("Successfully Send Message to : "+ contacto + '\n')
     success+=1
-    time.sleep(0.5)
+    #time.sleep(0.5)
     return True
 
 # Función que envia un mensaje a rasa y retorna el string correspondiente a la salida de rasa
@@ -69,23 +69,23 @@ def clear_whatsapp_chat(contacto):
     menu_xpath = "(//div[(@role='button') and (@title='Menu')])[2]"
     menu_button = wait.until(EC.presence_of_element_located((
         By.XPATH, menu_xpath)))
-    time.sleep(1)
+    #time.sleep(1)
     menu_button.click()
-    time.sleep(10)
+    #time.sleep(10)
     #seleccionar boton para borrar chat
     borrar_xpath = "//div[(@class='Ut_N0 n-CQr') and (@role='button') and (@title='Delete chat')]"
     #driver.find_element_by_xpath("//div[(@class='Ut_N0 n-CQr') and (@role='button') and (@title='Delete chat')]").click()
     borrar_button = wait.until(EC.presence_of_element_located((
         By.XPATH, borrar_xpath)))
-    time.sleep(1)
+    #time.sleep(1)
     borrar_button.click()
-    time.sleep(10)
+    #time.sleep(10)
     #confirmar borrar
     confirmar_borrar_xpath = "//div[(@class='S7_rT FV2Qy') and (@role='button')]"
     #driver.find_element_by_xpath("//div[(@class='S7_rT FV2Qy') and (@role='button')]").click()
     confirmar_borrar_button = wait.until(EC.presence_of_element_located((
         By.XPATH, confirmar_borrar_xpath)))
-    time.sleep(1)
+    #time.sleep(1)
     confirmar_borrar_button.click()
     return True
 
