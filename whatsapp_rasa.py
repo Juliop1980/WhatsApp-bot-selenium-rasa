@@ -91,23 +91,6 @@ def clear_whatsapp_chat(contacto):
 
 
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # selecciona el contacto en Whatsapp Web
 def select_contacto(contacto):
     try:
@@ -145,26 +128,27 @@ def select_contacto(contacto):
 
 
 
+if __name__ == '__main__':
 
 # Target Contacts, keep them in double colons
 # Not tested on Broadcast
-# targets = readContacts("contacts.xlsx")
+    targets = readContacts("contacts.xlsx")
 
 # can comment out below line
-# print(targets)
+    print(targets)
 
 # Driver to open a browser
-# driver = webdriver.Firefox()
+    driver = webdriver.Firefox()
 
 #link to open a site
-# driver.get("https://web.whatsapp.com/")
+    driver.get("https://web.whatsapp.com/")
 
 # 10 sec wait time to load, if good internet connection is not good then increase the time
 # units in seconds
 # note this time is being used below also
-# wait = WebDriverWait(driver, 10)
-# wait5 = WebDriverWait(driver, 5)
-# input("Scan the QR code and then press Enter")
+    wait = WebDriverWait(driver, 15)
+    wait5 = WebDriverWait(driver, 5)
+    input("Scan the QR code and then press Enter")
 
 # Message to send list
 # 1st Parameter: Hours in 0-23
@@ -256,4 +240,4 @@ def select_contacto(contacto):
 #         print(failList)
 #         print('\n\n')
 #         count+=1
-driver.quit()
+    driver.quit()
