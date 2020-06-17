@@ -57,10 +57,15 @@ def to_rasa(txt):
     clear_whatsapp_chat
     return bot_message
 
-def get_last_whatsapp_message(contacto):
-    select_contacto(contacto)
+def get_last_whatsapp_message():
+    #select_contacto(contacto)
     #clear_whatsapp_chat()
-    return driver.find_element_by_class_name("_274yw").text
+    first_message_glance = (driver.find_element_by_class_name("_274yw").text).splitlines()
+    return first_message_glance[0]
+
+def get_last_whatsapp_time():
+    first_message_glance = (driver.find_element_by_class_name("_274yw").text).splitlines()
+    return first_message_glance[1]
 
 
 def clear_whatsapp_chat(contacto):
@@ -121,6 +126,10 @@ def select_contacto(contacto):
     time.sleep(2)
 
 
+#def es_reciente(msj):
+
+
+
 
 
 
@@ -147,6 +156,16 @@ if __name__ == '__main__':
     wait = WebDriverWait(driver, 15)
     wait5 = WebDriverWait(driver, 5)
     input("Scan the QR code and then press Enter")
+
+    while True:
+        for i in targets:
+            select_contacto(i)
+            print(get_last_whatsapp_message())
+
+
+
+            
+
 
 # Message to send list
 # 1st Parameter: Hours in 0-23
