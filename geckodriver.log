@@ -7,3 +7,10 @@ JavaScript warning: https://web.whatsapp.com/app.5be2ce7458b30031ac49.js, line 1
 Exiting due to channel error.
 Exiting due to channel error.
 Exiting due to channel error.
+1592423520063	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileNrj3j0"
+1592423525979	Marionette	INFO	Listening on port 41831
+1592423526004	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://web.whatsapp.com/app.5be2ce7458b30031ac49.js, line 1: unreachable code after return statement
+JavaScript warning: https://web.whatsapp.com/app.5be2ce7458b30031ac49.js, line 1: unreachable code after return statement
+JavaScript warning: https://web.whatsapp.com/app.5be2ce7458b30031ac49.js, line 1: unreachable code after return statement
+1592423544695	Marionette	INFO	Stopped listening on port 41831
