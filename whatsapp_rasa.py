@@ -12,6 +12,7 @@ import datetime
 import time
 import openpyxl as excel
 import requests
+from datetime import datetime
 
 # function to read contacts from a text file
 def readContacts(fileName):
@@ -126,7 +127,41 @@ def select_contacto(contacto):
     time.sleep(2)
 
 
-#def es_reciente(msj):
+def es_reciente(whatsapp_time):
+    whatsapp_datetime = whatsapp_time_string_to_datetime(whatsapp_time)
+    now = datetime.now()
+    # aux_whatsapp_time = now.strftime("%Y-%m-%d")()
+    # whatsapp_hour= (whatsapp_time.split(":"))[0]
+    # time = (whatsapp_time.split(" "))[1]
+    # time_number =
+    # if time == "PM":
+
+
+    #print(whatsapp_hour)
+
+
+def whatsapp_time_string_to_datetime(time_string):
+    now = datetime.now()
+    aux_whatsapp_time = now.strftime("%Y-%m-%d")
+    whatsapp_hour = (time_string.split(":"))[0]
+    time = (time_string.split(" "))[1]
+    whatsapp_hour_number = int(whatsapp_hour)
+    if time == "PM":
+        whatsapp_hour = str(whatsapp_hour_number+12)
+    else:
+        whatsapp_hour= "0"+whatsapp_hour
+
+    aux_whatsapp_minutes = (((time_string.split(":"))[1]).split(" "))[0]
+
+    aux_whatsapp_time= aux_whatsapp_time + " " + whatsapp_hour + ":"+ aux_whatsapp_minutes
+
+    print(aux_whatsapp_time)
+
+
+
+
+
+
 
 
 
@@ -160,7 +195,7 @@ if __name__ == '__main__':
     while True:
         for i in targets:
             select_contacto(i)
-            print(get_last_whatsapp_message())
+            es_reciente(get_last_whatsapp_time())
 
 
 
