@@ -153,9 +153,11 @@ def whatsapp_time_string_to_datetime(time_string):
 
     aux_whatsapp_minutes = (((time_string.split(":"))[1]).split(" "))[0]
 
-    aux_whatsapp_time= aux_whatsapp_time + " " + whatsapp_hour + ":"+ aux_whatsapp_minutes
+    aux_whatsapp_time= aux_whatsapp_time + " " + whatsapp_hour + ":"+ aux_whatsapp_minutes + ":00"
 
-    print(aux_whatsapp_time)
+    datetime_object = datetime.strptime(aux_whatsapp_time, '%Y-%m-%d %H:%M:%S')
+    print(datetime_object)
+    return datetime_object
 
 
 
