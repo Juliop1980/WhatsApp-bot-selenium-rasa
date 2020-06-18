@@ -141,23 +141,39 @@ def es_reciente(whatsapp_time):
 
 
 def whatsapp_time_string_to_datetime(time_string):
-    now = datetime.now()
-    aux_whatsapp_time = now.strftime("%Y-%m-%d")
-    whatsapp_hour = (time_string.split(":"))[0]
-    time = (time_string.split(" "))[1]
-    whatsapp_hour_number = int(whatsapp_hour)
-    if time == "PM":
-        whatsapp_hour = str(whatsapp_hour_number+12)
-    else:
-        whatsapp_hour= "0"+whatsapp_hour
+    #now = datetime.now()
+    #aux_whatsapp_time = now.strftime("%Y-%m-%d")
+    aux_whatsapp_time = whatsapp_datetime_string()
+    # whatsapp_hour = (time_string.split(":"))[0]
+    # time = (time_string.split(" "))[1]
+    # whatsapp_hour_number = int(whatsapp_hour)
+    # if time == "PM":
+    #     whatsapp_hour = str(whatsapp_hour_number+12)
+    # else:
+    #     whatsapp_hour= "0"+whatsapp_hour
 
-    aux_whatsapp_minutes = (((time_string.split(":"))[1]).split(" "))[0]
+    # aux_whatsapp_minutes = (((time_string.split(":"))[1]).split(" "))[0]
 
-    aux_whatsapp_time= aux_whatsapp_time + " " + whatsapp_hour + ":"+ aux_whatsapp_minutes + ":00"
+    # aux_whatsapp_time= aux_whatsapp_time + " " + whatsapp_hour + ":"+ aux_whatsapp_minutes + ":00"
 
-    datetime_object = datetime.strptime(aux_whatsapp_time, '%Y-%m-%d %H:%M:%S')
-    #print(datetime_object)
-    return datetime_object
+    # datetime_object = datetime.strptime(aux_whatsapp_time, '%Y-%m-%d %H:%M:%S')
+    # #print(datetime_object)
+    # return datetime_object
+
+# devuelve la ultima fecha de whatsapp en un string
+def whatsapp_datetime_string():
+    datetime_string = driver.find_element_by_class_name("_3Whw5").text
+    #whatsapp_datetime_to_datetime_string(datetime_string)
+    print(datetime_string)
+
+    #aux_whatsapp_time = now.strftime("%Y-%m-%d")
+
+
+# devuelve la ultima fecha de whatsapp segun el string de whatsapp
+# def whatsapp_datetime_to_datetime_string(date_time_string):
+    
+#     return date_string
+
 
 
 
