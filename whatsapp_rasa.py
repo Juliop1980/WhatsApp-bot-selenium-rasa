@@ -144,6 +144,7 @@ def whatsapp_time_string_to_datetime(time_string):
     #now = datetime.now()
     #aux_whatsapp_time = now.strftime("%Y-%m-%d")
     aux_whatsapp_time = whatsapp_datetime_string()
+    print(aux_whatsapp_time)
     # whatsapp_hour = (time_string.split(":"))[0]
     # time = (time_string.split(" "))[1]
     # whatsapp_hour_number = int(whatsapp_hour)
@@ -160,11 +161,23 @@ def whatsapp_time_string_to_datetime(time_string):
     # #print(datetime_object)
     # return datetime_object
 
-# devuelve la ultima fecha de whatsapp en un string
+# devuelve la ultima fecha de whatsapp en un string. Si la fecha es anterior al dia anterior devuelve None
 def whatsapp_datetime_string():
-    datetime_string = driver.find_element_by_class_name("_3Whw5").text
+    date_xpath = "//span[@class='_3Whw5']"
+    #driver.find_element_by_xpath(date_xpath).text
+    whatsapp_date = driver.find_element_by_xpath(date_xpath).text
+    datetime_string = whatsapp_date.rstrip()
     #whatsapp_datetime_to_datetime_string(datetime_string)
-    print(datetime_string)
+    #print ("hola")
+    now = datetime.now()
+    if datetime_string == "TODAY":
+        return now.strftime("%Y-%m-%d")
+    elif datetime_string == "YESTERDAY":
+        dia = now.strftime("%d")
+        dia = str(int(dia)-1)
+        return (dia + "-" + now.strftime("%m-%d")) 
+    else:
+        return None
 
     #aux_whatsapp_time = now.strftime("%Y-%m-%d")
 
