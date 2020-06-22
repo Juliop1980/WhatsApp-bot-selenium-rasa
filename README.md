@@ -72,8 +72,6 @@ Step 8: When the browser is opened web.whatsapp.com will be opened and will ask 
 
 Step 9: After Scanning the QR code, you will be asked to press Enter Key in the terminal.
 
-Step 10: After Scanning the QR code, you will be asked to press Enter Key in the terminal.
-
 ### Note
 
 You can also add Names of the contact you want to send message in the Contacts.txt file.
