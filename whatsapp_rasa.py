@@ -101,6 +101,7 @@ def clear_whatsapp_chat(contacto):
 def select_contacto(contacto):
     # Select the target
     x_arg = '//span[contains(@title,' + contacto + ')]'
+
     try:
         wait5.until(EC.presence_of_element_located((
             By.XPATH, x_arg
@@ -241,7 +242,7 @@ if __name__ == '__main__':
             if (es_reciente(get_last_whatsapp_time())):
                 to_whatsapp(to_rasa(get_last_whatsapp_message()),i)
             clear_whatsapp_chat(i)
-        time.sleep(30)
+        time.sleep(10)
 
 
 
