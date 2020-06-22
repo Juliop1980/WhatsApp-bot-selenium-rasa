@@ -130,6 +130,7 @@ def select_contacto(contacto):
 def es_reciente(whatsapp_time):
     whatsapp_datetime = whatsapp_time_string_to_datetime(whatsapp_time)
     now = datetime.now()
+    print(whatsapp_datetime)
     difference = (now - whatsapp_datetime)
     total_seconds = difference.total_seconds()
     if total_seconds <= 30:
@@ -177,7 +178,9 @@ def whatsapp_datetime_string():
     #whatsapp_datetime_to_datetime_string(datetime_string)
     #print ("hola")
     now = datetime.now()
+    #print(datetime_string)
     if datetime_string == "TODAY":
+        #print(now.strftime("%Y-%m-%d"))
         return now.strftime("%Y-%m-%d")
     elif datetime_string == "YESTERDAY":
         days = timedelta(1)
@@ -235,7 +238,9 @@ if __name__ == '__main__':
     while True:
         for i in targets:
             select_contacto(i)
-            es_reciente(get_last_whatsapp_time())
+            if (es_reciente(get_last_whatsapp_time())):
+                
+            clear_whatsapp_chat()
 
 
 
