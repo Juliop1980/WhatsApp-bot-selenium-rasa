@@ -173,11 +173,13 @@ def whatsapp_datetime_string():
     if datetime_string == "TODAY":
         return now.strftime("%Y-%m-%d")
     elif datetime_string == "YESTERDAY":
-        dia = now.strftime("%d")
-        dia = str(int(dia)-1)
-        return (dia + "-" + now.strftime("%m-%d")) 
+        days = datetime.timedelta(1)
+        new_date = now - days
+        return new_date.strftime("%Y-%m-%d")
     else:
-        return None
+        days = datetime.timedelta(3)
+        new_date = now - days
+        return new_date.strftime("%Y-%m-%d")
 
     #aux_whatsapp_time = now.strftime("%Y-%m-%d")
 
