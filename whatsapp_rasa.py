@@ -12,7 +12,7 @@ import datetime
 import time
 import openpyxl as excel
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # function to read contacts from a text file
 def readContacts(fileName):
@@ -144,22 +144,21 @@ def whatsapp_time_string_to_datetime(time_string):
     #now = datetime.now()
     #aux_whatsapp_time = now.strftime("%Y-%m-%d")
     aux_whatsapp_time = whatsapp_datetime_string()
-    print(aux_whatsapp_time)
-    # whatsapp_hour = (time_string.split(":"))[0]
-    # time = (time_string.split(" "))[1]
-    # whatsapp_hour_number = int(whatsapp_hour)
-    # if time == "PM":
-    #     whatsapp_hour = str(whatsapp_hour_number+12)
-    # else:
-    #     whatsapp_hour= "0"+whatsapp_hour
+    #print(aux_whatsapp_time)
+    whatsapp_hour = (time_string.split(":"))[0]
+    time = (time_string.split(" "))[1]
+    whatsapp_hour_number = int(whatsapp_hour)
+    if time == "PM":
+        whatsapp_hour = str(whatsapp_hour_number+12)
+    else:
+        whatsapp_hour= "0"+whatsapp_hour
 
-    # aux_whatsapp_minutes = (((time_string.split(":"))[1]).split(" "))[0]
+    aux_whatsapp_minutes = (((time_string.split(":"))[1]).split(" "))[0]
 
-    # aux_whatsapp_time= aux_whatsapp_time + " " + whatsapp_hour + ":"+ aux_whatsapp_minutes + ":00"
+    aux_whatsapp_time= aux_whatsapp_time + " " + whatsapp_hour + ":"+ aux_whatsapp_minutes + ":00"
 
-    # datetime_object = datetime.strptime(aux_whatsapp_time, '%Y-%m-%d %H:%M:%S')
-    # #print(datetime_object)
-    # return datetime_object
+    datetime_object = datetime.strptime(aux_whatsapp_time, '%Y-%m-%d %H:%M:%S')
+    return datetime_object
 
 # devuelve la ultima fecha de whatsapp en un string. Si la fecha es anterior al dia anterior devuelve None
 def whatsapp_datetime_string():
@@ -173,11 +172,11 @@ def whatsapp_datetime_string():
     if datetime_string == "TODAY":
         return now.strftime("%Y-%m-%d")
     elif datetime_string == "YESTERDAY":
-        days = datetime.timedelta(1)
+        days = timedelta(1)
         new_date = now - days
         return new_date.strftime("%Y-%m-%d")
     else:
-        days = datetime.timedelta(3)
+        days = timedelta(3)
         new_date = now - days
         return new_date.strftime("%Y-%m-%d")
 
