@@ -1,7 +1,9 @@
 # WhatsApp Bot
 
-This is a simple Web WhatsApp Bot developed in python using Selenium. 
+This is a simple Web WhatsApp Bot developed in python using Selenium but also connected to Rasa. 
 Selenium is used mainly for automating web applications for testing purposes, but is certainly not limited to just that. Boring web-based administration tasks can (and should!) be automated as well.
+
+Rasa is an open-source natural lenguage processing library
 
 Selenium has the support of some of the largest browser vendors who have taken (or are taking) steps to make Selenium a native part of their browser. It is also the core technology in countless other browser automation tools, APIs and frameworks.
 
