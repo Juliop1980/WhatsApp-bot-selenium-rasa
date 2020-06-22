@@ -130,6 +130,14 @@ def select_contacto(contacto):
 def es_reciente(whatsapp_time):
     whatsapp_datetime = whatsapp_time_string_to_datetime(whatsapp_time)
     now = datetime.now()
+    difference = (now - whatsapp_datetime)
+    total_seconds = difference.total_seconds()
+    if total_seconds <= 30:
+        print("True")
+        return True
+    else:
+        print("False")
+        return False
     # aux_whatsapp_time = now.strftime("%Y-%m-%d")()
     # whatsapp_hour= (whatsapp_time.split(":"))[0]
     # time = (whatsapp_time.split(" "))[1]
