@@ -26,6 +26,7 @@ Selenium has the support of some of the largest browser vendors who have taken (
 * [Python 3+](https://www.python.org/download/releases/3.0/?) - Pyhton 3.6+ verion
 * [Selenium](https://github.com/SeleniumHQ/selenium) - Selenium for web automation
 * [openpyxl](https://pypi.org/project/openpyxl/) - To read xls files
+* [Rasa] 
 
 ### Installation
 
@@ -46,13 +47,30 @@ Step 4: Set path variable to the environment. Paste this command to the terminal
 $ export PATH=$PATH:/home/path/to/the/driver/folder/
 Eg: $ export PATH=$PATH:/home/harshit/Desktop/WhatsAppBot
 ```
-Step 5: run whatsapp.py using Python3
+
+Step 5: initialize actions server for rasa inside rasa folder
+```sh
+$ cd rasa
+$ rasa run actions
+```
+
+
+Step 6: initialize rasa webhook server inside rasa folder
+```sh
+$ cd rasa
+$ rasa run -m models --endpoints endpoints.yml --port 5002 --credentials c
+redentials.ymlr
+```
+
+Step 7: run whatsapp.py using Python3
 ```sh
 $ python3 whatsapp.py
 ```
-Step 6: When the browser is opened web.whatsapp.com will be opened and will ask to scan a QR code when you it first time
+Step 8: When the browser is opened web.whatsapp.com will be opened and will ask to scan a QR code when you it first time
 
-Step 7: After Scanning the QR code, you will be asked to press Enter Key in the terminal.
+Step 9: After Scanning the QR code, you will be asked to press Enter Key in the terminal.
+
+Step 10: After Scanning the QR code, you will be asked to press Enter Key in the terminal.
 
 ### Note
 
