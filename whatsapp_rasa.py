@@ -42,7 +42,7 @@ def to_whatsapp(txt, contacto):
     #time.sleep(10)
     input_box.send_keys(Keys.ENTER)
     print("Successfully Send Message to : "+ contacto + '\n')
-    success+=1
+    #success+=1
     #time.sleep(0.5)
     return True
 
@@ -55,7 +55,7 @@ def to_rasa(txt):
     r = requests.post('http://localhost:5002/webhooks/rest/webhook', json={"sender": sender, "message": txt})
     for i in r.json():
         bot_message = bot_message + i['text']
-    clear_whatsapp_chat
+    #clear_whatsapp_chat
     return bot_message
 
 def get_last_whatsapp_message():
@@ -133,11 +133,11 @@ def es_reciente(whatsapp_time):
     print(whatsapp_datetime)
     difference = (now - whatsapp_datetime)
     total_seconds = difference.total_seconds()
-    if total_seconds <= 30:
-        print("True")
+    if total_seconds <= 3600:
+        #print("True")
         return True
     else:
-        print("False")
+        #print("False")
         return False
     # aux_whatsapp_time = now.strftime("%Y-%m-%d")()
     # whatsapp_hour= (whatsapp_time.split(":"))[0]
@@ -239,8 +239,9 @@ if __name__ == '__main__':
         for i in targets:
             select_contacto(i)
             if (es_reciente(get_last_whatsapp_time())):
-                
-            clear_whatsapp_chat()
+                to_whatsapp(to_rasa(get_last_whatsapp_message()),i)
+            clear_whatsapp_chat(i)
+        time.sleep(30)
 
 
 
