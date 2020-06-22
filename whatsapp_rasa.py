@@ -14,6 +14,11 @@ import openpyxl as excel
 import requests
 from datetime import datetime, timedelta
 
+
+driver = webdriver.Firefox()
+wait = WebDriverWait(driver, 150)
+wait5 = WebDriverWait(driver, 999999999)
+
 # function to read contacts from a text file
 def readContacts(fileName):
     lst = []
@@ -73,7 +78,7 @@ def clear_whatsapp_chat(contacto):
     select_contacto(contacto)
     #Selecciona menu para luego presionar boton para borrar chat
     menu_xpath = "(//div[(@role='button') and (@title='Menu')])[2]"
-    menu_button = wait.until(EC.presence_of_element_located((
+    menu_button = wait5.until(EC.presence_of_element_located((
         By.XPATH, menu_xpath)))
     #time.sleep(1)
     menu_button.click()
@@ -81,7 +86,7 @@ def clear_whatsapp_chat(contacto):
     #seleccionar boton para borrar chat
     borrar_xpath = "//div[(@class='Ut_N0 n-CQr') and (@role='button') and (@title='Delete chat')]"
     #driver.find_element_by_xpath("//div[(@class='Ut_N0 n-CQr') and (@role='button') and (@title='Delete chat')]").click()
-    borrar_button = wait.until(EC.presence_of_element_located((
+    borrar_button = wait5.until(EC.presence_of_element_located((
         By.XPATH, borrar_xpath)))
     #time.sleep(1)
     borrar_button.click()
@@ -89,7 +94,7 @@ def clear_whatsapp_chat(contacto):
     #confirmar borrar
     confirmar_borrar_xpath = "//div[(@class='S7_rT FV2Qy') and (@role='button')]"
     #driver.find_element_by_xpath("//div[(@class='S7_rT FV2Qy') and (@role='button')]").click()
-    confirmar_borrar_button = wait.until(EC.presence_of_element_located((
+    confirmar_borrar_button = wait5.until(EC.presence_of_element_located((
         By.XPATH, confirmar_borrar_xpath)))
     #time.sleep(1)
     confirmar_borrar_button.click()
@@ -242,7 +247,8 @@ if __name__ == '__main__':
             if (es_reciente(get_last_whatsapp_time())):
                 to_whatsapp(to_rasa(get_last_whatsapp_message()),i)
             clear_whatsapp_chat(i)
-        time.sleep(10)
+        time.sleep(15)
+
 
 
 
