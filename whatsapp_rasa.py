@@ -166,7 +166,8 @@ def whatsapp_time_string_to_datetime(time_string):
     if time == "PM":
         whatsapp_hour = str(whatsapp_hour_number+12)
     else:
-        whatsapp_hour= "0"+whatsapp_hour
+        if whatsapp_hour_number <10:
+            whatsapp_hour= "0"+whatsapp_hour
 
     aux_whatsapp_minutes = (((time_string.split(":"))[1]).split(" "))[0]
 
